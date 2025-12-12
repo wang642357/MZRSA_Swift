@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MZRSA {
+@objc public class MZRSA : NSObject{
     
     //MARK:-  encrypt or decrypt by SecKey String
     
@@ -16,7 +16,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - privateKey: 私钥字符串
     /// - Returns: 加密后Data
-    public static func encryptData(_ data: Data, privateKey: String) -> Data? {
+    @objc public static func encryptData(_ data: Data, privateKey: String) -> Data? {
         let secKey = addPrivateKey(privateKey)
         if secKey == nil {
             return nil
@@ -29,7 +29,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - privateKey: 私钥字符串
     /// - Returns: 加密后String
-    public static func encryptString(_ string: String, privateKey: String) -> String? {
+    @objc public static func encryptString(_ string: String, privateKey: String) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, privateKey: privateKey) else {
             return nil
         }
@@ -41,7 +41,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - privateKey: 私钥字符串
     /// - Returns: 解密后Data
-    public static func decryptData(_ data: Data, privateKey: String) -> Data? {
+    @objc public static func decryptData(_ data: Data, privateKey: String) -> Data? {
         let secKey = addPrivateKey(privateKey)
         if secKey == nil {
             return nil
@@ -54,7 +54,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - privateKey: 私钥字符串
     /// - Returns: 解密后String
-    public static func decryptString(_ string: String, privateKey: String) -> String? {
+    @objc public static func decryptString(_ string: String, privateKey: String) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, privateKey: privateKey)
         if data == nil {
@@ -68,7 +68,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - publicKey: 公钥字符串
     /// - Returns: 加密后Data
-    public static func encryptData(_ data: Data, publicKey: String) -> Data? {
+    @objc public static func encryptData(_ data: Data, publicKey: String) -> Data? {
         let secKey = addPublicKey(publicKey)
         if secKey == nil {
             return nil
@@ -81,7 +81,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - publicKey: 公钥字符串
     /// - Returns: 加密后String
-    public static func encryptString(_ string: String, publicKey: String) -> String? {
+    @objc public static func encryptString(_ string: String, publicKey: String) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, publicKey: publicKey) else {
             return nil
         }
@@ -93,7 +93,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - publicKey: 公钥字符串
     /// - Returns: 解密后Data
-    public static func decryptData(_ data: Data, publicKey: String) -> Data? {
+    @objc public static func decryptData(_ data: Data, publicKey: String) -> Data? {
         let secKey = addPublicKey(publicKey)
         if secKey == nil {
             return nil
@@ -106,7 +106,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - publicKey: 公钥字符串
     /// - Returns: 解密后String
-    public static func decryptString(_ string: String, publicKey: String) -> String? {
+    @objc public static func decryptString(_ string: String, publicKey: String) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, publicKey: publicKey)
         if data == nil {
@@ -122,7 +122,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - privateKeyData: 私钥Data
     /// - Returns: 加密后的Data
-    public static func encryptData(_ data: Data, privateKeyData: Data) -> Data? {
+    @objc public static func encryptData(_ data: Data, privateKeyData: Data) -> Data? {
         let secKey = addPrivateKey(privateKeyData)
         if secKey == nil {
             return nil
@@ -135,7 +135,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - privateKeyData: 私钥Data
     /// - Returns: 加密后的String
-    public static func encryptString(_ string: String, privateKeyData: Data) -> String? {
+    @objc public static func encryptString(_ string: String, privateKeyData: Data) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, privateKeyData: privateKeyData) else {
             return nil
         }
@@ -147,7 +147,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - privateKeyData: 私钥Data
     /// - Returns: 解密后的Data
-    public static func decryptData(_ data: Data, privateKeyData: Data) -> Data? {
+    @objc public static func decryptData(_ data: Data, privateKeyData: Data) -> Data? {
         let secKey = addPrivateKey(privateKeyData)
         if secKey == nil {
             return nil
@@ -160,7 +160,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - privateKeyData: 私钥Data
     /// - Returns: 解密后的String
-    public static func decryptString(_ string: String, privateKeyData: Data) -> String? {
+    @objc public static func decryptString(_ string: String, privateKeyData: Data) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, privateKeyData: privateKeyData)
         if data == nil {
@@ -174,7 +174,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - publicKeyData: 公钥Data
     /// - Returns: 加密后Data
-    public static func encryptData(_ data: Data, publicKeyData: Data) -> Data? {
+    @objc public static func encryptData(_ data: Data, publicKeyData: Data) -> Data? {
         let secKey = addPublicKey(publicKeyData)
         if secKey == nil {
             return nil
@@ -187,7 +187,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - publicKeyData: 公钥Data
     /// - Returns: 加密后String
-    public static func encryptString(_ string: String, publicKeyData: Data) -> String? {
+    @objc public static func encryptString(_ string: String, publicKeyData: Data) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, publicKeyData: publicKeyData) else {
             return nil
         }
@@ -199,7 +199,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - publicKeyData: 公钥Data
     /// - Returns: 解密后Data
-    public static func decryptData(_ data: Data, publicKeyData: Data) -> Data? {
+    @objc public static func decryptData(_ data: Data, publicKeyData: Data) -> Data? {
         let secKey = addPublicKey(publicKeyData)
         if secKey == nil {
             return nil
@@ -212,7 +212,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - publicKeyData: 公钥Data
     /// - Returns: 解密后String
-    public static func decryptString(_ string: String, publicKeyData: Data) -> String? {
+    @objc public static func decryptString(_ string: String, publicKeyData: Data) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, publicKeyData: publicKeyData)
         if data == nil {
@@ -229,7 +229,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - privateKeyPath: 私钥证书路径
     /// - Returns: 加密后Data
-    public static func encryptData(_ data: Data, privateKeyPath: String) -> Data? {
+    @objc public static func encryptData(_ data: Data, privateKeyPath: String) -> Data? {
         let secKey = loadPrivateKey(privateKeyPath)
         if secKey == nil {
             return nil
@@ -242,7 +242,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - privateKeyPath: 私钥证书路径
     /// - Returns: 加密后String
-    public static func encryptString(_ string: String, privateKeyPath: String) -> String? {
+    @objc public static func encryptString(_ string: String, privateKeyPath: String) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, privateKeyPath: privateKeyPath) else {
             return nil
         }
@@ -254,7 +254,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - privateKeyPath: 私钥证书路径
     /// - Returns: 解密后Data
-    public static func decryptData(_ data: Data, privateKeyPath: String) -> Data? {
+    @objc public static func decryptData(_ data: Data, privateKeyPath: String) -> Data? {
         let secKey = loadPrivateKey(privateKeyPath)
         if secKey == nil {
             return nil
@@ -267,7 +267,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - privateKeyPath: 私钥证书路径
     /// - Returns: 解密后String
-    public static func decryptString(_ string: String, privateKeyPath: String) -> String? {
+    @objc public static func decryptString(_ string: String, privateKeyPath: String) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, privateKeyPath: privateKeyPath)
         if data == nil {
@@ -281,7 +281,7 @@ public struct MZRSA {
     ///   - data: 需加密的Data
     ///   - publicKeyPath: 公钥证书路径
     /// - Returns: 加密后Data
-    public static func encryptData(_ data: Data, publicKeyPath: String) -> Data? {
+    @objc public static func encryptData(_ data: Data, publicKeyPath: String) -> Data? {
         let secKey = loadPublicKey(publicKeyPath)
         if secKey == nil {
             return nil
@@ -294,7 +294,7 @@ public struct MZRSA {
     ///   - string: 需加密的String
     ///   - publicKeyPath: 公钥证书路径
     /// - Returns: 加密后String
-    public static func encryptString(_ string: String, publicKeyPath: String) -> String? {
+    @objc public static func encryptString(_ string: String, publicKeyPath: String) -> String? {
         guard let data = encryptData(string.data(using: String.Encoding.utf8)!, publicKeyPath: publicKeyPath) else {
             return nil
         }
@@ -306,7 +306,7 @@ public struct MZRSA {
     ///   - data: 需解密的Data
     ///   - publicKeyPath: 公钥证书路径
     /// - Returns: 解密后Data
-    public static func decryptData(_ data: Data, publicKeyPath: String) -> Data? {
+    @objc public static func decryptData(_ data: Data, publicKeyPath: String) -> Data? {
         let secKey = loadPublicKey(publicKeyPath)
         if secKey == nil {
             return nil
@@ -319,7 +319,7 @@ public struct MZRSA {
     ///   - string: 需解密的String
     ///   - publicKeyPath: 公钥证书路径
     /// - Returns: 解密后String
-    public static func decryptString(_ string: String, publicKeyPath: String) -> String? {
+    @objc public static func decryptString(_ string: String, publicKeyPath: String) -> String? {
         var data = base64_decode(string)
         data = decryptData(data!, publicKeyPath: publicKeyPath)
         if data == nil {
