@@ -456,7 +456,7 @@ import Foundation
         return addPublicKey(data!)
     }
     
-    public static func addPublicKey(_ data: Data) -> SecKey? {
+    @objc public static func addPublicKey(_ data: Data) -> SecKey? {
         let tag = "RSAUtil_PubKey"
         let d_tag = tag.data(using: String.Encoding.utf8)
         
