@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.authors         = { 'MZ' => '1691665955@qq.com' }
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.source = { :git => "https://github.com/wang642357/MZRSA_Swift.git", :tag => spec.version}
-  spec.platform     = :ios, "9.0"
+  spec.platform     = :ios, "12.0"
   spec.swift_version = '4.2'
   spec.source_files  = "MZRSA.swift"
 end
